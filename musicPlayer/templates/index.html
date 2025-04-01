@@ -1,11 +1,20 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
   </head>
   <body>
     <h1>This is html page</h1>
+    <form action="{% url 'user_view' %}" method="post">
+      {% csrf_token %}
+      <input type="text" name="username" placeholder="Enter your username" />
+      <input type="email" name="email" placeholder="Enter your email" />
+      <button type="submit">submit</button>
+    </form>
+    <!-- <div>hi</div> -->
   </body>
 </html>
