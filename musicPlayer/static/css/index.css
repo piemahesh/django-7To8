@@ -6,7 +6,11 @@
 
 body {
   background-color: black;
-  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100dvh;
+  width: 100%;
 }
 
 form {
@@ -16,10 +20,12 @@ form {
   border-radius: 20px;
   flex-direction: column;
   max-width: 60%;
+  width: 100%;
   margin: auto;
   gap: 20px;
   align-items: center;
   justify-content: space-around;
+  color: black;
   input,
   button {
     width: 100%;

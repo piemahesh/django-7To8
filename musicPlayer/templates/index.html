@@ -8,11 +8,15 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}" />
   </head>
   <body>
-    <h1>This is html page</h1>
-    <form action="{% url 'user_view' %}" method="post">
+    <form action="{% url 'addProduct' %}" method="post">
       {% csrf_token %}
-      <input type="text" name="username" placeholder="Enter your username" />
-      <input type="email" name="email" placeholder="Enter your email" />
+      <h2>Add new product</h2>
+      <input
+        type="text"
+        name="productName"
+        placeholder="Enter your productName"
+      />
+      <input type="text" name="price" placeholder="Enter your productPrice" />
       <button type="submit">submit</button>
     </form>
     <!-- <div>hi</div> -->
