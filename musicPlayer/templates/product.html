@@ -1,12 +1,39 @@
 <!DOCTYPE html>
+
 <html lang="en">
+  {% load static %}
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
     <title>Document</title>
   </head>
   <body>
-    <h1>Users</h1>
-    <h1>{{ data }}</h1>
+    <div>
+      <h1 class="heading">Products</h1>
+      <a href="{% url 'home' %}" class="back">back</a>
+    </div>
+    <div class="card-container">
+      {% for product in data %}
+      <div class="card">
+        <h1>
+          <span>product Name</span>
+          {{ product.productName }}
+        </h1>
+        <h1>
+          <span>product price</span>
+          {{ product.price }}
+        </h1>
+        <div>
+          <a href="{% url 'deleteProduct'  %}" onclick="onDelete()" class="btn"
+            >Delete</a
+          >
+          <a class="btn">Edit</a>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+    <script src="{% static 'js/product.js' %}"></script>
   </body>
 </html>

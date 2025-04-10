@@ -1,9 +1,8 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponse
 from .db import products
 
 # Create your views here.
 def getIndexPage(req):
-    print("index page requested")
     return render(req, 'index.html')
 
 def addProduct(req):
@@ -20,3 +19,7 @@ def addProduct(req):
        for product in dbProducts:
            myProduct.append(product)
        return render(req, 'product.html',{"data":myProduct})
+   
+
+def deleteProduct(req):
+    print("delete request come")
