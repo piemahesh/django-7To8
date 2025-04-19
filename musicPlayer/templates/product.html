@@ -9,10 +9,18 @@
     <title>Document</title>
   </head>
   <body>
+    <div id="deleteModal" class="modal closed">
+      <h1>Are you sure do you want to delete</h1>
+      <div>
+        <button class="yes">Yes</button>
+        <button class="no">No</button>
+      </div>
+    </div>
     <div>
       <h1 class="heading">Products</h1>
       <a href="{% url 'home' %}" class="back">back</a>
     </div>
+
     <div class="card-container">
       {% for product in data %}
       <div class="card">
@@ -25,10 +33,8 @@
           {{ product.price }}
         </h1>
         <div>
-          <a href="{% url 'deleteProduct'  %}" onclick="onDelete()" class="btn"
-            >Delete</a
-          >
-          <a class="btn">Edit</a>
+          <a onclick="onDelete('{{product.docId}}')" class="btn">Delete</a>
+          <a onclick="onEdit('{{product.docId}}')" class="btn">Edit</a>
         </div>
       </div>
 

@@ -6,6 +6,7 @@
 
 body {
   background-color: black;
+  color: white;
   height: 100dvh;
   width: 100%;
 }
@@ -13,7 +14,6 @@ body {
 .heading {
   text-align: center;
   color: white;
-  margin-top: 10px;
 }
 
 .back {
@@ -81,9 +81,6 @@ form {
   h1 {
     color: gray;
     font-size: 1.5em;
-    span {
-      color: rgb(0, 0, 0);
-    }
   }
   .btn {
     background-color: purple;
@@ -93,4 +90,34 @@ form {
     border: none;
     border-radius: 3.5px;
   }
+}
+
+.modal {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-color: #ffffff57;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  .yes {
+    padding: 10px 15px;
+    background-color: black;
+    color: white;
+  }
+  .no {
+    padding: 10px 15px;
+    background-color: #1073b4;
+    color: white;
+  }
+}
+
+.closed {
+  display: none;
+}
+
+.open {
+  display: flex;
 }

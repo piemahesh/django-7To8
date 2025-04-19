@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+  </head>
+  <body>
+    <form action="{% url 'editProduct' data.docId %}" method="post">
+      {% csrf_token %}
+      <h2>Update product</h2>
+      <input
+        type="text"
+        name="productName"
+        placeholder="Enter your productName"
+        value="{{data.productName}}"
+      />
+      <input
+        type="text"
+        name="price"
+        value="{{data.price}}"
+        placeholder="Enter your productPrice"
+      />
+      <button type="submit">update</button>
+    </form>
+    <!-- <div>hi</div> -->
+  </body>
+</html>

@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect,HttpResponse
 from .db import products
+from bson import ObjectId,objectid
 
 # Create your views here.
 def getIndexPage(req):
@@ -16,10 +17,33 @@ def addProduct(req):
    else:
        dbProducts = products.find()
        myProduct = []
+       
        for product in dbProducts:
+           product["docId"] = str(product["_id"])
            myProduct.append(product)
+       print(myProduct)
        return render(req, 'product.html',{"data":myProduct})
    
 
-def deleteProduct(req):
-    print("delete request come")
+def deleteProduct(req,id):
+    products.delete_one({'_id':ObjectId(id)})
+    return redirect("addProduct")
+    
+def editProduct(req,id):
+    if(req.method == 'GET'):
+        product = products.find_one({'_id':ObjectId(id)})
+        product['docId'] = str(product['_id'])
+        print("======================================================================")
+        print(product)
+        print("======================================================================")
+        return render(req,"edit.html",{"data":product})
+    elif(req.method == "POST"):
+        print(id)
+        reqMethod = req.POST
+        productName = reqMethod.get("productName")
+        price = reqMethod.get("price")
+        data = {"productName": productName, "price": price}
+        products.update_one({'_id':ObjectId(id)},{"$set":data})
+        print(data,"[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]")
+        return redirect("addProduct")
+        # products.insert_one(data)
