@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,HttpResponse
 from .db import products
-from bson import ObjectId,objectid
+from bson import ObjectId
 
 # Create your views here.
 def getIndexPage(req):
